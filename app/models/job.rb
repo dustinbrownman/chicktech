@@ -1,9 +1,10 @@
 class Job < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  belongs_to :team
   has_many :tasks
   validates_presence_of :name
-  validates_presence_of :event_id
+  validates_presence_of :team_id
 
   def owned_by?(user)
     self.user_id == user.id

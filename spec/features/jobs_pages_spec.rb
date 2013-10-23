@@ -5,11 +5,10 @@ feature 'Creating jobs' do
   let(:event) { FactoryGirl.create(:event) }
 
   scenario 'with valid inputs' do
-    event = FactoryGirl.create(:event)
+    team = FactoryGirl.create(:team)
     sign_in(admin)
-    visit new_job_path
+    visit new_job_path(:team_id => team.id)
     fill_in 'Name', with: 'Example name'
-    select event.name, from: 'job_event_id'
     click_on 'Create Job'
     page.should have_content 'successfully'
   end

@@ -1,13 +1,12 @@
 <%= render @event %>
 <% if can? :manage, @event %>
-  <%= link_to "Add jobs", new_job_path(:event_id => @event) %>
+  <%= link_to "Create a Team", new_team_path(:event_id => @event) %>
 <% end %>
 
-<% if @event.jobs.any? %>
-  <h3>Jobs for this event</h3>
-  <% @event.jobs.each do |job| %>
+<h3>Teams</h3>
+<% @event.teams.each do |team| %>
+  <%= render team %>
+  <% team.jobs.each do |job| %>
     <%= render job %>
   <% end %>
-<% else %>
-    <h3>No jobs have been created for this event.</h3>    
-<% end %>  
+<% end %>

@@ -9,6 +9,17 @@ FactoryGirl.define do
     finish Time.now + 4.hours
   end
 
+  factory :team do
+    name 'Gryffindor'
+    event
+  end
+
+  factory :job do
+    name 'The Chosen One'
+    description 'Save Hogwarts'
+    team
+  end
+
   factory :task do
     description 'Example task'
     job
@@ -37,11 +48,5 @@ FactoryGirl.define do
       email 'graybeard@hogwarts.edu'
       role 'superadmin'
     end
-  end
-
-  factory :job do
-    name 'The Chosen One'
-    description 'Save Hogwarts'
-    event
   end
 end

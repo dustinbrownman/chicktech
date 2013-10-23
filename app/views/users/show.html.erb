@@ -3,16 +3,18 @@
   <p>Phone: <%= @user.phone %></p>
   <p>Email: <%= @user.email %></p>
   <p>Role: <%= @user.role %></p>
-  <%= link_to "Edit Profile", edit_user_path(@user), :class => 'edit-links' %>  <!-- should be in a <p> tag, perhaps? -->
+  <p><%= link_to "Edit Profile", edit_user_path(@user), :class => 'edit-links' %></p>
 </div>
 
 <div class='user-jobs'>
   <h2 class='section-header'><%= @user.first_name %>'s Jobs:</h2>
   <% @user.unique_events.each do |event| %>
     <%= render event %>
-    <% event.jobs.each do |job| %>
-      <% if job.owned_by?(@user) %>
-        <%= render job %>
+    <% event.team.each do |team| %>
+      <% team.jobs.each do |job| %>
+        <% if job.owned_by?(@user) %>
+          <%= render job %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -20,7 +22,7 @@
 
 <hr class='style-four'>
 
-<div class='all-jobs'>
+<div class='all-jobs'><!--fixme change style name to all-events-->
   <% if current_user == @user %>
     <h2 class='section-header'>All Upcoming Chicktech Events:</h2>
     <% if @events && %>

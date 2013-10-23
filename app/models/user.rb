@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   validates_presence_of :role
 
   has_many :jobs
-  has_many :events, through: :jobs
+  has_many :events, through: :teams
+  has_many :teams, through: :jobs
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable, 
@@ -20,9 +22,16 @@ class User < ActiveRecord::Base
     ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
+  def unique_teams
+    @teams = Team.all
+    self.teams.uniq
+  end
+
   def unique_events
     @events = Event.all
-    self.events.uniq
+    self.unique_teams.map do |team|
+      team.event
+    end.uniq
   end
 
   def send_information

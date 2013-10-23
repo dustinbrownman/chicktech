@@ -12,6 +12,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
+      @team = Team.create(:name => 'General', :event_id => @event.id)
+      @job = @team.jobs.new(:name => 'Event Project Manager')
+      @job.save
       flash[:notice] = "Event created successfully!"
       redirect_to @event
     else

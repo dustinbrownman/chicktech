@@ -1,0 +1,8 @@
+<h1>Create a team for <%= @event.name %></h1>
+<% form_for @team do |f| %>
+  <%= f.label :name, "Team Name" %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :event_id %>
+  <%= f.submit, :class => "btn btn-primary" %>
+<% end %>
+

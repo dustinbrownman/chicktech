@@ -1,5 +1,6 @@
 Chicktech::Application.routes.draw do
   resources :events
+  resources :teams
   devise_for :users, :skip => [:registrations]
     as :user do
       get 'users/edit_password' => 'devise/registrations#edit', :as => 'change_password'
