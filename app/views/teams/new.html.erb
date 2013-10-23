@@ -1,8 +1,14 @@
-<h1>Create a team for <%= @event.name %></h1>
-<% form_for @team do |f| %>
-  <%= f.label :name, "Team Name" %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :event_id %>
-  <%= f.submit, :class => "btn btn-primary" %>
+<h1>Create a team for <%= @team.event.name %></h1>
+
+<% if @team.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>Please correct these errors:</h4>
+    <ul>
+      <% @team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
+<% render 'teams/form' %>

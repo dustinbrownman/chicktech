@@ -10,7 +10,7 @@
   <h2 class='section-header'><%= @user.first_name %>'s Jobs:</h2>
   <% @user.unique_events.each do |event| %>
     <%= render event %>
-    <% event.team.each do |team| %>
+    <% event.teams.each do |team| %>
       <% team.jobs.each do |job| %>
         <% if job.owned_by?(@user) %>
           <%= render job %>

@@ -116,3 +116,4 @@ feature "Signing up for jobs" do
     page.should have_content "Taken by"
   end
 end
+

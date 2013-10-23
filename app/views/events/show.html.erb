@@ -1,6 +1,6 @@
 <%= render @event %>
 <% if can? :manage, @event %>
-  <%= link_to "Create a Team", new_team_path(:event_id => @event) %>
+  <%= link_to "Create a Team", new_team_path(:event_id => @event.id) %>
 <% end %>
 
 <h3>Teams</h3>
