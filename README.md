@@ -17,7 +17,3 @@ Eleanor Mark     [@eleanormark](http://twitter.com/eleanormark)
 The project is being built as an internship project in the Epicodus Web Development bootcamp (Fall 2013).
 
 This application is not currently being maintained.
-
-
-
-
